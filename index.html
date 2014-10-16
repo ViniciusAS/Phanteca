@@ -1,17 +1,16 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=0.7, maximum-scale=0.7">
-        <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
-        <script type="text/javascript" charset="utf-8" src="/js/jquery.mobile-1.4.4.js"></script>
-        <script type="text/javascript" charset="utf-8" src="/js/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="http://biblioteca.projetos.in/js/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="http://biblioteca.projetos.in/js/jquery.mobile-1.4.4.js"></script>
         <script type="text/javascript">
             $(function(){
                 var logoOpen = false;
                 var exec = false;
-                $('img#logo').on('click', function(){
+                $('img#logo').tap(function(){
                     if (exec === false){
                         exec = true;
-                        $('div.texto, button.inicial, button.inicial.first').finish();
+                        $('div.texto, img#logo, button.inicial, button.inicial.first').finish();
                         if (logoOpen === false){
                             $('div.texto').animate({
                                 'margin-top' : '-100px',
@@ -52,8 +51,8 @@
                 mecheFundo();
             });
             function mecheFundo(){
-                $('.fundo').animate({ 'background-position-x' : '-500px' }, 40000);
-                $('.fundo').animate({ 'background-position-x' : '-10px' }, 40000);
+                $('.fundo').animate({ 'background-position-x' : '-500px' }, 30000);
+                $('.fundo').animate({ 'background-position-x' : '-10px' }, 30000);
                 setTimeout(function(){
                     mecheFundo();
                 }, 0);
