@@ -1,0 +1,144 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=0.7, maximum-scale=0.7">
+        <script type="text/javascript" src="/js/jquery.mobile-1.4.4.js"></script>
+        <script type="text/javascript" src="/js/jquery-1.10.2.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                var logoOpen = false;
+                var exec = false;
+                $('img#logo').on('click', function(){
+                    if (exec === false){
+                        exec = true;
+                        $('div.texto, button.inicial, button.inicial.first').finish();
+                        if (logoOpen === false){
+                            $('div.texto').animate({
+                                'margin-top' : '-100px',
+                                'opacity' : 0
+                            }, 800);
+                            $('button.inicial').animate({
+                                'opacity' : 0
+                            }, 800);
+                            $('button.inicial.first').animate({
+                                'margin-top' : '100px'
+                            }, 800);
+                            $(this).animate({
+                                'margin-top' : '160px'
+                            }, 800);
+                            logoOpen = true;
+                        } else {
+                            $('div.texto').animate({
+                                'margin-top' : '20px',
+                                'opacity' : 1
+                            }, 800);
+                            $('button.inicial.first').animate({
+                                'margin-top' : '15px',
+                                'opacity' : 1
+                            }, 800);
+                            $('button.inicial').animate({
+                                'opacity' : 1
+                            }, 800);
+                            $(this).animate({
+                                'margin-top' : '20px'
+                            }, 800);
+                            logoOpen = false;
+                        }
+                        setTimeout(function(){
+                            exec = false; 
+                        }, 1000);
+                    }
+                });
+                mecheFundo();
+            });
+            function mecheFundo(){
+                $('.fundo').animate({ 'background-position-x' : '-500px' }, 40000);
+                $('.fundo').animate({ 'background-position-x' : '-10px' }, 40000);
+                setTimeout(function(){
+                    mecheFundo();
+                }, 0);
+            }
+        </script>
+        <style type="text/css">
+            body{
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                font-family: "Roboto";
+            }
+            .fundo{
+                background-image: url('/img/fundo-inicial.jpg');
+                background-position: 0px 0px;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                position: fixed;
+            }
+            .fundo .sobreFundo{
+                background: black;
+                opacity: 0.5;
+                width: 100%;
+                height: 100%;
+                z-index: 2;
+                position: fixed;
+            }
+            .conteudo{
+                z-index: 3;
+                position: fixed;
+                text-align: center;
+                margin: 0 auto;
+                width: 100%;
+            }
+                .conteudo .texto{
+                    color: white;
+                    font-weight: 600;
+                    font-size: 35px;
+                    text-align: center;
+                    text-shadow: #666666 1px 1px 2px;
+                    margin-top: 20px;
+                }
+                .conteudo img{
+                    margin-top: 20px;
+                }
+                .conteudo button.inicial{
+                    background-color: white;
+                    width: 90%;
+                    height: 50px;
+                    border-radius: 3px;
+                    border: none;
+                    box-shadow: #000000 1px 1px 1px;
+                    margin: 0;
+                    margin-top: 15px;
+                    color: #221E1F;
+                    font-size: 24px;
+                    font-weight: 600;
+                    padding-top: 12px;
+                    padding-bottom: 8px;
+                    padding-left: 0;
+                    padding-right: 0;
+                    cursor: pointer;
+                    outline: none;
+                }
+                .conteudo button.inicial:hover{
+                    background-color: #efefef;
+                    outline: none;
+                }
+                .conteudo button.inicial:active{
+                    background-color: #bebebe;
+                    outline: none;
+                }
+        </style>
+    </head>
+    <body>
+        <div class="fundo"><div class="sobreFundo"></div></div>
+        <div class="conteudo">
+            <div class="texto">
+                Descubra<br />
+                um mundo de <br />
+                possibilidades!<br />
+            </div>
+            <img id="logo" src="/img/logo.png"><br />
+            <button class="inicial first">Cadastre-se</button><br />
+            <button class="inicial">Entrar</button>
+        </div>
+    </body>
+</html>
